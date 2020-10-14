@@ -88,7 +88,7 @@ return newarr;
 function getAverageGoals(data) {
 let averageHome;
 let averageAway;
-data.reduce((acc,item)=>{
+data.reduce((acc,item)=>{  
 return averageHome = (acc + item["Home Team Goals"])/data.length;
 },0)
 
@@ -107,29 +107,44 @@ getAverageGoals(fifaData);
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
+function getCountryWins(data,initial) {
+let arr = data.filter(item => {
+    return item.Stage === "Final";
+});
 
-    /* code here */
+   return arr.reduce((count,item) => {
+       if(item['Home Team Initials'] === initial && item['Home Team Name'] === item['Win conditions']()){
+           count ++;
+       }
+       else if(item['Away Team Initials'] === initial && item['Home Team Name'] === item['Win conditions']()){
+           count ++;
+       }
+     return count;
+    },0)
 
 };
 
-getCountryWins();
+console.log(getCountryWins(fifaData,"FRG"));
 
 
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
-function getGoals(/* code here */) {
+// function getGoals(data) {
+//     let country = [];
+//     let arr = data.filter(item => {
+//         return item.Stage === "Final";
+//     });
+// arr.map.forEach((item)=>{
 
-    /* code here */
+// })
 
-};
 
-getGoals();
+// getGoals(fifaData);
 
 
 /* Stretch 4: Write a function called badDefense() that accepts a parameter `data` and calculates the team with the most goals scored against them per appearance (average goals against) in the World Cup finals */
 
-function badDefense(/* code here */) {
+function badDefense() {
 
     /* code here */
 
